@@ -4,7 +4,7 @@
 
 # How it works ?
 
-- Choose a package (ie. fabot/goutte)
+- Choose a package (ie. fabpot/goutte)
 - Choose a downloads period
     - Total
     - Monthly
