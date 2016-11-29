@@ -34,6 +34,10 @@ class Response
      */
     public function setData($array = [])
     {
+        if ($array['downloads'] > 10e5) {
+            $array['downloads'] = round(($array['downloads'] / 10e5), 2) . 'M';
+        }
+
         return $this->asJson([
             'frames' => [
                 [
