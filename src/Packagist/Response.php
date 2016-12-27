@@ -25,6 +25,7 @@ class Response
      */
     public function asJson($data = array())
     {
+        header("Content-Type: application/json");
         return json_encode($data, JSON_PRETTY_PRINT);
     }
 
