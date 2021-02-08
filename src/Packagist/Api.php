@@ -1,25 +1,30 @@
 <?php
-namespace Lametric\Packagist;
+
+declare(strict_types=1);
+
+namespace Packagist;
 
 use GuzzleHttp\Client;
 
 class Api
 {
     /** @var array */
-    private $parameters = [];
+    private array $parameters = [];
 
     /**
      * @param array $parameters
      */
-    public function setParameters($parameters)
+    public function setParameters(array $parameters = [])
     {
         $this->parameters = $parameters;
     }
 
     /**
      * @return array
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getResult()
+    public function getResult(): array
     {
         $endpoint = 'https://packagist.org/packages/' . $this->parameters['package'] . '.json';
 
@@ -28,23 +33,23 @@ class Api
 
         $body = $result->getBody();
 
-        $data = json_decode($body, JSON_OBJECT_AS_ARRAY);
+        $data = json_decode((string)$body, true);
 
         return [
             'downloads' => (int)$data['package']['downloads'][$this->parameters['period']] . $this->getSuffix(),
-            'package' => $this->parameters['package']
+            'package'   => $this->parameters['package'],
         ];
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    private function getSuffix()
+    private function getSuffix(): string
     {
         $suffixes = [
-            'total' => '',
+            'total'   => '',
             'monthly' => ' /m',
-            'daily' => ' /d'
+            'daily'   => ' /d',
         ];
 
         return $suffixes[$this->parameters['period']];

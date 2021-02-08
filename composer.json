@@ -1,10 +1,12 @@
 {
   "require": {
-    "guzzlehttp/guzzle": "^6.2"
+    "php": ">=8.0",
+    "guzzlehttp/guzzle": "^6.2",
+    "sentry/sdk": "^3.1"
   },
   "autoload": {
     "psr-4": {
-      "Lametric\\": "src/"
+      "Packagist\\": "src/Packagist"
     }
   }
 }

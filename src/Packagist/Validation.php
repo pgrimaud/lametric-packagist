@@ -1,31 +1,34 @@
 <?php
-namespace Lametric\Packagist;
+
+declare(strict_types=1);
+
+namespace Packagist;
 
 class Validation
 {
     /**
      * @var array
      */
-    private $parameters = [
+    private array $parameters = [
         'package',
-        'period'
+        'period',
     ];
 
     /**
      * @var array
      */
-    private $period = [
+    private array $period = [
         'total',
         'monthly',
-        'daily'
+        'daily',
     ];
 
     /**
-     * Validation constructor.
      * @param array $parameters
+     *
      * @throws \Exception
      */
-    public function __construct($parameters = [])
+    public function __construct(array $parameters = [])
     {
         foreach ($this->parameters as $name) {
             if (empty($parameters[$name])) {
@@ -43,17 +46,8 @@ class Validation
     /**
      * @return array
      */
-    public function getParameters()
+    public function getParameters(): array
     {
         return $this->parameters;
-    }
-
-    /**
-     * @param $parameter
-     * @return mixed|null
-     */
-    public function getParameter($parameter)
-    {
-        return isset($this->parameters[$parameter]) ? $this->parameters[$parameter] : null;
     }
 }
