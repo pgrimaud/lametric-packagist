@@ -15,9 +15,6 @@ try {
     $api->setParameters($parameters->getParameters());
 
     echo $response->setData($api->getResult());
-
 } catch (Exception $e) {
-
     echo $response->setUnAuthorized();
-
 }
