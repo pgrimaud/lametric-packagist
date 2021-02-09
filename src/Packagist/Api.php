@@ -49,8 +49,8 @@ class Api
     {
         $suffixes = [
             'total'   => '',
-            'monthly' => ' /m',
-            'daily'   => ' /d',
+            'monthly' => '/m',
+            'daily'   => '/d',
         ];
 
         return $suffixes[$this->parameters['period']];
