@@ -36,7 +36,8 @@ class Api
         $data = json_decode((string)$body, true);
 
         return [
-            'downloads' => (int)$data['package']['downloads'][$this->parameters['period']] . $this->getSuffix(),
+            'downloads' => (int)$data['package']['downloads'][$this->parameters['period']],
+            'suffix'    => $this->getSuffix(),
             'package'   => $this->parameters['package'],
         ];
     }

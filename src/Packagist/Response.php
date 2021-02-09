@@ -52,7 +52,7 @@ class Response
                 ],
                 [
                     'index' => 1,
-                    'text'  => $array['downloads'],
+                    'text'  => $array['downloads'] . $array['suffix'],
                     'icon'  => 'i4663',
                 ],
             ],
